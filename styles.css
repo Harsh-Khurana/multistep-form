@@ -5,6 +5,7 @@
   margin: 0px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -22,6 +23,7 @@ body {
 }
 
 form {
+  position: relative;
   padding: 1rem;
   border-radius: .5rem;
   height: 70vh;
@@ -58,7 +60,51 @@ form {
   }
 }
 
-form .form-elements {
+form .form-element-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+form .form-element-wrapper .btn-form-tracker {
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  margin-right: 2rem;
+  background-color: teal;
+  color: white;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+form .form-element-wrapper .tracker-2 {
+  -webkit-transform: translateY(-2rem);
+          transform: translateY(-2rem);
+}
+
+form .form-element-wrapper .tracker-3 {
+  -webkit-transform: translateY(-4rem);
+          transform: translateY(-4rem);
+}
+
+form .form-element-wrapper .form-elements {
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -68,16 +114,17 @@ form .form-elements {
           flex-direction: column;
 }
 
-form .form-elements input {
+form .form-element-wrapper .form-elements input {
   border: none;
-  border-bottom: 2px solid mistyrose;
+  border-bottom: 2px solid teal;
   outline: none;
   border-radius: 0;
   padding: .5rem;
   font-size: 1.1rem;
 }
 
-form .form-elements label {
+form .form-element-wrapper .form-elements label {
+  color: grey;
   pointer-events: none;
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -85,22 +132,58 @@ form .form-elements label {
           transform: translate(0.3rem, 1.9rem);
 }
 
-form .form-elements .moveUpOnFocus {
+form .form-element-wrapper .form-elements .moveUpOnFocus {
   -webkit-transform: translate(0.3rem, 0);
           transform: translate(0.3rem, 0);
 }
 
-form input[type="submit"] {
-  background-color: mistyrose;
+form .form-element-wrapper .form-elements .btn-continue {
+  margin-top: 1rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  cursor: pointer;
+  background-color: teal;
   color: white;
-  padding: .5rem 1rem;
-  font-size: 1.4rem;
   border: none;
   -webkit-transition: -webkit-transform .2s;
   transition: -webkit-transform .2s;
   transition: transform .2s;
   transition: transform .2s, -webkit-transform .2s;
   outline: none;
+  padding: .3rem .7rem;
+}
+
+form .form-element-wrapper .form-elements .btn-continue:hover {
+  -webkit-transform: translateY(-0.1rem);
+          transform: translateY(-0.1rem);
+}
+
+form .form-element-wrapper .form-elements .btn-continue:active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+form .form-element-wrapper .scaleUp {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
+form .form-element-wrapper .translateDown {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+form input[type="submit"] {
+  background-color: teal;
+  color: white;
+  border: none;
+  -webkit-transition: -webkit-transform .2s;
+  transition: -webkit-transform .2s;
+  transition: transform .2s;
+  transition: transform .2s, -webkit-transform .2s;
+  outline: none;
+  padding: .5rem 1.5rem;
+  font-size: 1.4rem;
 }
 
 form input[type="submit"]:hover {
@@ -111,5 +194,48 @@ form input[type="submit"]:hover {
 form input[type="submit"]:active {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+form #submitAnime {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+form #submitAnime #tick-lower {
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  -webkit-transition-delay: .2s;
+          transition-delay: .2s;
+  -webkit-transform: translate(2px, 40px) rotate(-40deg) scaleY(0);
+          transform: translate(2px, 40px) rotate(-40deg) scaleY(0);
+}
+
+form #submitAnime #tick-upper {
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  -webkit-transition-delay: .2s;
+          transition-delay: .2s;
+  -webkit-transform: translate(27px, 69px) rotate(-133deg) scaleY(0);
+          transform: translate(27px, 69px) rotate(-133deg) scaleY(0);
+}
+
+form .submitAnimeColor {
+  background-color: teal;
 }
 /*# sourceMappingURL=styles.css.map */

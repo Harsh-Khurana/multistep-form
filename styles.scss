@@ -1,5 +1,20 @@
 // VARIABLES
+$color-primary:teal;
 
+// common logic for btns -> continue & submit
+@mixin buttonStyle {
+    background-color: $color-primary;
+    color: white;
+    border: none;
+    transition: transform .2s;
+    outline: none;
+    &:hover{
+        transform: translateY(-.1rem);
+    }
+    &:active{
+        transform: translateY(0);
+    }
+}
 
 // NORMALIZING CSS 
 *,
@@ -8,6 +23,7 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body{
@@ -19,6 +35,7 @@ body{
 }
 
 form{
+    position: relative;
     padding: 1rem;
     border-radius: .5rem;
     height: 70vh;
@@ -37,39 +54,102 @@ form{
     @media only screen and (min-width:768px) {
         width: 50%;
     }
-    .form-elements{
+    .form-element-wrapper{
         display: flex;
-        flex-direction: column;
-        input{
-            border: none;
-            border-bottom: 2px solid mistyrose;
-            outline: none;
-            border-radius: 0;
-            padding: .5rem;
-            font-size: 1.1rem;
+        align-items: center;
+        justify-content: space-around;
+        .btn-form-tracker{
+            transition: transform .5s;
+            margin-right: 2rem;
+            background-color: $color-primary;
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
         }
-        label{
-            pointer-events: none;
-            transition: all .3s;
-            transform: translate(.3rem, 1.9rem);
+        // tracker-2 && tracker-3 seprate to make tracker-1 as default in full scaled when page loads
+        // tracker-2 a little below tracker-1
+        .tracker-2{
+            transform: translateY(-2rem);
         }
-        .moveUpOnFocus{
-            transform:translate(.3rem, 0);
+        // tracker-3 a little below tracker-2
+        .tracker-3{
+            transform: translateY(-4rem);
         }
-    }
-    input[type="submit"]{
-        background-color: mistyrose;
-        color: white;
-        padding: .5rem 1rem;
-        font-size: 1.4rem;
-        border: none;
-        transition: transform .2s;
-        outline: none;
-        &:hover{
-            transform: translateY(-.1rem);
+        .form-elements{
+            transition: transform .5s;
+            transform-origin: top;
+            transform: scaleY(0);
+            display: flex;
+            flex-direction: column;
+            input{
+                border: none;
+                border-bottom: 2px solid $color-primary;
+                outline: none;
+                border-radius: 0;
+                padding: .5rem;
+                font-size: 1.1rem;
+            }
+            label{
+                color:grey;
+                pointer-events: none;
+                transition: all .3s;
+                transform: translate(.3rem, 1.9rem);
+            }
+            // this shifts the label up when user clicks on input box
+            .moveUpOnFocus{
+                transform:translate(.3rem, 0);
+            }
+            .btn-continue{
+                margin-top: 1rem;
+                align-self: flex-end;
+                cursor: pointer;
+                @include buttonStyle();
+                padding: .3rem .7rem;
+            }
         }
-        &:active{
+        // scaleUp scales the form-elements to full size from scale(0)
+        .scaleUp{
+            transform: scaleY(1);
+        }
+        // translateDown translates the form trackers down to their original position
+        .translateDown{
             transform: translateY(0);
         }
+    }
+    // style for submit button
+    input[type="submit"]{
+        @include buttonStyle();
+        padding: .5rem 1.5rem;
+        font-size: 1.4rem;
+    }
+    // animation included when form is submitted
+    #submitAnime{
+        position: absolute;
+        display: flex;
+        z-index: 1;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        // svg tick-lower part
+        #tick-lower{
+            transition: transform 1s;
+            transition-delay: .2s;
+            transform: translate(2px, 40px) rotate(-40deg) scaleY(0);
+        }
+        // svg tick-upper part
+        #tick-upper{
+            transition: transform 1s;
+            transition-delay: .2s;
+            transform: translate(27px, 69px) rotate(-133deg) scaleY(0);
+        }
+    }
+    // class that gets added by JS when submit is made
+    .submitAnimeColor{
+        background-color: $color-primary;
     }
 }

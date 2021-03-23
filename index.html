@@ -8,20 +8,45 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- All the structure is in form only -->
     <form>
-        <div class="form-elements">
-            <label for="username">Name</label>
-            <input type="text" name="username" id="username" autocomplete="off">
+        <!-- form-element-wrapper is the parent wrapper for the single form element unit with continue button, input, form-tracker -->
+        <div class="form-element-wrapper">
+            <!-- form-tracker is the side btn that can be used to shift bw form elements -->
+            <div class="btn-form-tracker tracker-1">1</div>
+            <!-- form-element is form wrapper without tracker included -->
+            <div class="form-elements">
+                <label for="username">Name</label>
+                <input type="text" name="username" id="username" autocomplete="off">
+                <!-- continue btn will switch to next form-element/form-element wrapper -->
+                <div class="btn-continue">Continue</div>
+            </div>
         </div>
-        <div class="form-elements">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" autocomplete="off">
+        <div class="form-element-wrapper">
+            <div class="btn-form-tracker tracker-2">2</div>
+            <div class="form-elements">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" autocomplete="off">
+                <div class="btn-continue">Continue</div>
+            </div>
         </div>
-        <div class="form-elements">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" autocomplete="off">
+        <div class="form-element-wrapper">
+            <div class="btn-form-tracker tracker-3">3</div>
+            <div class="form-elements">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" autocomplete="off">
+                <div class="btn-continue">Continue</div>
+            </div>
         </div>
         <input type="submit">
+        <div id="submitAnime">
+            <svg width="95" height="69" viewBox="0 0 95 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="tick">
+                    <rect id="tick-upper" width="11.1755" height="90.8096" transform="matrix(0.700891 0.713268 -0.748875 0.662711 86.8491 0)" fill="white"/>
+                    <rect id="tick-lower" width="11.2062" height="27.7493" transform="matrix(0.737244 -0.675627 0.713249 0.700911 0 41.5422)" fill="white"/>
+                </g>
+            </svg>
+        </div>
     </form>
 
     <script src="app.js"></script>
